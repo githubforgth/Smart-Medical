@@ -1,0 +1,7 @@
+<!--pages/list/list.wxml-->
+<view class="container" style="color: darkgreen;">
+  <button class="container_min" bindtap="next_calculator">2222</button>
+</view>
+
+
+
