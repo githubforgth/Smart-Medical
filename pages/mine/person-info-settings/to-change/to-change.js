@@ -1,4 +1,5 @@
-// pages/sign_up/sign_up.js
+// pages/mine/person-info-settings/to-change/to-change.js
+const app = getApp()
 Page({
 
   /**

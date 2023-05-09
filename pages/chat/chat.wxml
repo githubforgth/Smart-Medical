@@ -1,12 +1,5 @@
-<!-- <view class="container" style="display: flex;">
-  <form bindsubmit="onSubmit">
-    <input name="message" placeholder="输入病情" />
-    <button form-type="submit">发送</button>
-  </form>
-</view> -->
-<view class="page">
-  <!-- 页面内容 -->
-</view>
+
+
 <form bindsubmit="onSubmit" class="input-form">
   <view class="input-wrapper">
   <view class="input_container">

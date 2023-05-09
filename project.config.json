@@ -1,7 +1,13 @@
 {
   "description": "项目配置文件",
+  "cloudfunctionRoot": "cloudfunctions/",
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      {
+        "value": ".eslintrc.js",
+        "type": "file"
+      }
+    ],
     "include": []
   },
   "setting": {
@@ -43,6 +49,7 @@
   "libVersion": "2.17.0",
   "appid": "wx949d5d5b6222c49a",
   "projectname": "miniprogram-92",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",

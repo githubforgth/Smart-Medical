@@ -1,4 +1,5 @@
 // pages/prescribe/prescribe.js
+const app = getApp()
 Page({
 
   /**

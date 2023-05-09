@@ -1,11 +1,18 @@
 // pages/person-info-settings/person-info-setting.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    user:{
+      headshot:'https://img.wxcha.com/m00/65/4e/89433954b6fdfacab88ffcdb8e84158e.jpg',
+      name: '高泰恒',
+      gender:'男',
+      title:"光头大主管",
+      department:"内科"
+    }
   },
 
   /**

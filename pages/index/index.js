@@ -1,4 +1,4 @@
-var app = getApp()
+const app = getApp()
 /*
 1. 新增患者接口
 2.待回复接口

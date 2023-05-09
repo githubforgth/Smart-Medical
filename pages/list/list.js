@@ -1,4 +1,5 @@
 // pages/list/list.js
+const app = getApp()
 Page({
 
   /**
@@ -69,11 +70,5 @@ Page({
   onShareAppMessage() {
 
   },
-  next_calculator: function () {
-    wx.navigateTo({
-      url: '/pages/login/login',
-    })
-  },
-},
-
+}
 )

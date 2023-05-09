@@ -1,3 +1,9 @@
+<!-- <
+  还有个问题 ：
+    1. 数据怎么传到下一个页面
+    2.将id设为全局变量
+> -->
+
 <view class="container_mian">
   <!-- <image src="../../images/编辑.png"> 2 </image> -->
   <view class="void_break"></view>
@@ -48,7 +54,7 @@
     <text class="btn_text">前沿文章</text>
   </view>
 </view >
-<view class="container_min"></view>
+<view style="height: 20px;"></view>
 <!-- <今日待办> -->
 <view class="backlog_container">
   <view style="display: flex;   align-items: center;"  >

@@ -1,15 +1,16 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/logs/logs",
     "pages/mine/mine",
-    "pages/login/login",
-    "pages/sign_up/sign_up",
     "pages/list/list",
     "pages/prescribe/prescribe",
     "pages/chat/chat",
     "pages/medical_records/medical_records",
-    "pages/mine/person-info-settings/person-info-setting"
+    "pages/mine/person-info-settings/person-info-setting",
+    "pages/mine/person-info-settings/to-change/to-change",
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",
