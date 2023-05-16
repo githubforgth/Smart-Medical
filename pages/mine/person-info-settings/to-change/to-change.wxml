@@ -1,2 +1,6 @@
-<!--pages/mine/person-info-settings/to-change/to-change.wxml-->
-<text>pages/mine/person-info-settings/to-change/to-change.wxml</text>
+<view class="container" style="font-size: larger;">
+  <form bindsubmit="changeInfo">
+  <input name="value" type="text" placeholder="输入值"/>
+  <button form-type="submit">提交</button>
+  </form>
+</view>

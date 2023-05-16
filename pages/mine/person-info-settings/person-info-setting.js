@@ -7,13 +7,15 @@ Page({
    */
   data: {
     user:{
+      id: null,
       headshot:'https://img.wxcha.com/m00/65/4e/89433954b6fdfacab88ffcdb8e84158e.jpg',
-      name: '高泰恒',
-      gender:'男',
-      title:"光头大主管",
-      department:"内科"
+      name: null,
+      gender:null,
+      title:null,
+      department:null
     }
   },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -24,6 +26,38 @@ Page({
     })
   },
   onLoad(options) {
+    wx.getStorage({
+      key: 'data',
+      success: (res) =>{
+        // 使用缓存数据
+        console.log('使用缓存数据pensor-info-setting：', res.data);
+        this.setData({
+          user: res.data
+        });
+      },
+      fail:()=>{
+        wx.request({
+          url: 'http://127.0.0.1:5000/test_2',
+          data:{
+            open_id: app.globalData.userInfo._openid
+          },
+          success:(res)=>{
+            console.log(res.data)
+            this.setData({
+              user: res.data
+            });
+            console.log(this.data.name)
+            wx.setStorage({             
+              key: 'data',
+              data: res.data,
+              success: function() {
+                console.log('数据已缓存');
+              }
+            })
+          }
+    })
+      }
+      })
 
   },
 
@@ -74,5 +108,35 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  to_changeName:function(){
+    // var medical_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: './to-change/to-change?changeType=' + "name",
+    })
+  },
+  to_changeGender:function(){
+    // var medical_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: './to-change/to-change?changeType=' + "gender",
+    })
+  },
+  to_changeTitle:function(){
+    // var medical_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: './to-change/to-change?changeType=' + "title",
+    })
+  },
+  to_changeDepartment:function(){
+    // var medical_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: './to-change/to-change?changeType=' + "department",
+    })
+  },
+  to_changeheadshot:function(){
+    // var medical_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: './to-change/to-change?changeType=' + "headshot",
+    })
   }
 })

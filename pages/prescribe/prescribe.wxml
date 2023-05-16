@@ -1,15 +1,20 @@
-<view style="display: inline;">
-<view class="container_put" style="height: 50px;"></view>
+<!-- <view style="display: inline;">
+<view class="container_mian" style="height: 50px;"></view>
 <view style="height: 150px;">
 <view class="container_put" >
-<view style="display: flex;">
-  <text>患者名：</text>
+  <form bindsubmit="onSearchInput">
+
   <view class="search-bar">
-    <input placeholder="输入关键词搜索" bindinput="onSearchInput" />
+  <view style="width: 200px;">
+    <input placeholder="输入关键词搜索"  />
   </view>
-</view>
+    <view class="button">
+      <button  form-type="submit">🔎搜索</button>
+    </view>
+  </view>
+  </form>
 <scroll-view scroll-y="true" bindscrolltolower="onLoadMore" class="show_sercher">
-  <!-- 显示搜索结果 -->
+  显示搜索结果
   <block wx:for="{{searchResult}}" wx:key="index">
     <view style="border-bottom: 1px black;">{{item}}</view>
   </block>
@@ -25,4 +30,39 @@
 <input placeholder="请输入药方"/>
 </view>
 </view>
-<button form-type="submit" style="font-size: 30px; background: rgb(163, 195, 255); border-radius: 20px; color: #fff;">submit</button>
+<button form-type="submit" style="font-size: 30px; background: rgb(163, 195, 255); border-radius: 20px; color: #fff;">提交</button> -->
+<!-- <view>----------------------------------------------------------------------</view> -->
+<view wx:if="{{searchResult.length=== 0 & patiant_id === null}}">
+{{patiant_id}}
+  <view class="container_choise" style="height: 100px;">
+    <form bindsubmit="onSearchInput">
+      <input  name="name" type="text" style="box-shadow:0px 1px rgb(156, 156, 156) ;border: 1px solid #ccc; height: 50px; margin-bottom: 2%; border-radius: 10rpx; padding-left: 3%; width: 200px;" placeholder="输入关键词搜索"/>
+      <button form-type="submit" style="width: 65%;"> 🚀搜索</button>
+    </form>
+  </view>
+</view>
+<view wx:else="{{true}}" class="container_put">
+<view wx:if="{{patiant_id === null}}">
+  <view wx:for="{{searchResult}}">
+    <view class="container_put_choice" name="value" data-value="{{item[0]}}"             bindtap="choose_result">
+      病人id为{{item[0]}} (症状：{{item[5]}})
+    </view>
+  </view>
+</view> 
+ <view wx:else="{{patiant_id != null}}">
+ <form bindsubmit="submit_Info">
+  <scroll-view style="font-size: larger; width: 90%;" class="container_put_choice" >
+  <view>病情诊断：</view>
+    <textarea maxlength="1000" placeholder="请输入诊断结果" style="margin-top: 5%; "name = "condition">
+    </textarea>
+  </scroll-view>
+  <scroll-view style="font-size: larger; width: 90%;" class="container_put_choice" >
+  <view>输入处方</view>
+    <textarea maxlength="1000" name= "medical" placeholder="请输入处方" style="margin-top: 5%;">
+    </textarea>
+  </scroll-view>
+  <button class="button" style="background-color: rgb(82, 149, 236); color: azure; margin-top: 5%;" form-type="submit">提交信息</button>
+</form>
+  </view>
+</view>
+<view class="blank-space"></view>

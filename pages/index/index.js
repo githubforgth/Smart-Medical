@@ -6,6 +6,7 @@ const app = getApp()
 */
 Page({
       data: {
+          id: 0 ,
           indicatorDots: true,
           vertical: false,
           autoplay: true,
@@ -22,21 +23,48 @@ Page({
           todo_item:"" ,    //  待办
           headshot:""//头像
       },
-  
       //事件处理函数
       swiperchange: function(e) {
           //console.log(e.detail.current)
       },
   
       onLoad: function() {
+        this.setData({
+          id : wx.getStorageSync('userInfo')._id
+        }),
+        // console.log(this.data.id),
       wx.request({
         url: 'http://127.0.0.1:5000/todolist',
+        data:{
+          // id: this.data.id
+          id: 1
+        },
         success:res=>{
           this.setData({todo_item: res.data.todo_item})
         }
       })
+      wx.getStorage({
+        key: 'userInfo',
+        success: (res) =>{
+          // 使用缓存数据
+          console.log('使用缓存数据：', res.data);
+          var patient_sum_num = JSON.parse(res.data.patient);
+          var idLenght = Object.values(patient_sum_num.id);
+          this.setData({
+            name_info: res.data.name,
+            motto_info: res.data.motto,
+            gender: res.data.gender,
+            headshot: res.data.head_shot,
+            patient_sum_num: idLenght.length
+          });
+          
+        },
+        fail: ()=> {
         wx.request({
-          url: 'http://127.0.0.1:5000/doctor_info',
+          url: 'http://127.0.0.1:5000/test_2',
+          data:{
+            open_id: app.globalData.userInfo._openid
+          },
           success:(res)=>{
             this.setData({
               name_info: res.data.name,
@@ -44,9 +72,17 @@ Page({
               gender: res.data.gender,
               headshot: res.data.headshot
             });
-            console.log(this.data.name_info)
+            wx.setStorage({
+              key: 'userInfo',
+              data: res.data,
+              success: function() {
+                console.log('数据已缓存');
+              }
+            })
           }
         })
+      }
+      })
         wx.request({
           url: 'http://127.0.0.1:5000/show_medical',
          success: (res) =>  {

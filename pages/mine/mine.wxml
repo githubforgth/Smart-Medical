@@ -3,11 +3,11 @@
     <image src="{{headshot}}" class="doctor_img" style="color: rgb(255, 255, 255);"></image>
     <view class="doctor_init">
       <view class="doctor_info">
-        <text class="doctor_name">{{name_info}}</text>
-        <text class="doctor_position" >主任</text> 
+        <text class="doctor_name">{{name}}</text>
+        <text class="doctor_position" >{{department}}</text> 
       </view>
     <view class="text_block"></view>
-    <text  style="color: #fff;">山东协和</text>
+    <text  style="color: #fff;">{{title}}</text>
   </view>
 <image class="edit" ></image>
 </view>

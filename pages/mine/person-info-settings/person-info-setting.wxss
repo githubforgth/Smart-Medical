@@ -27,3 +27,12 @@
   height: 120rpx;  
   width: 120rpx;
 }
+.edit{
+  height: 40rpx;  
+  width: 30rpx;
+}
+.show_Info{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}

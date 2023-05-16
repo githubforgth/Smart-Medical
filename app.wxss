@@ -23,3 +23,6 @@
 .container_min{
   height: 80px;
 }
+.blank-space{
+  height: 40px;
+}

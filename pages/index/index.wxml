@@ -78,8 +78,11 @@
       <text class="case_name">姓名：{{item.name}}</text>
       <text class="case_sex">性别：{{item.gender}}</text>
     </view>
-  <view class="case_describe">
-      <text> {{item.condition_description}}</text>
-  </view>
+<scroll-view style="max-height: 200rpx; " scroll-y="true">
+    <view class="case_describe">
+        <text style="user-select: text;">  {{item.condition_description}}</text>
+    </view>
+  </scroll-view>
   </view>
 </view>
+<view class="blank-space"></view>

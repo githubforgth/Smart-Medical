@@ -208,6 +208,7 @@ swiper-item image {
 .case_describe{
   margin-top: 1%;
   margin-left: 8%;
+  margin-right: 8%;
   width: 90%;
   max-height: 30%;
   font-size: medium;

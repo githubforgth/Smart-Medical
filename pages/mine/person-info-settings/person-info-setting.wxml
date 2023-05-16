@@ -1,25 +1,34 @@
 <view class="container_min"></view>
 <view>
-    <view class="item"> 
+    <view class="item" bindtap="to_changeheadshot"> 
           <view>  头像：</view>
-        <view style="justify-self: flex-end;">
-           <image  class="show_pic" src="{{user.headshot}}"></image>
+        <view class="show_Info" style="justify-self: flex-end;">
+           <image  class="show_pic" src="{{user.head_shot}}"></image>
+           <image class="edit" src="/images/向右箭头.png"></image>
         </view>
     </view>
-  <view class="item">
+  <view class="item" bindtap="to_changeName">
     <view >姓名：</view>
-    <view>{{user.name}}</view>
+
+    <view style="align-self: center;">{{user.name}}
+      <image class="edit" src="/images/向右箭头.png"></image></view>
   </view>
-  <view class="item">
+  <view class="item" bindtap="to_changeGender">
     <view >性别：</view>
-    <view>{{user.gender}}</view>
+    <view>{{user.gender}}
+      <image class="edit" src="/images/向右箭头.png"></image>
+    </view>
   </view>
-  <view class="item">
+  <view class="item" bindtap="to_changeTitle">
     <view >职称：</view>
-    <view>{{user.title}}</view>
+    <view>{{user.title}}
+      <image class="edit" src="/images/向右箭头.png"></image>
+      </view>
   </view>
-  <view class="item">
+  <view class="item" bindtap="to_changeDepartment">
     <view >科室：</view>
-    <view>{{user.department}}</view>
+    <view>{{user.department}}
+    <image class="edit" src="/images/向右箭头.png"></image>
+    </view>
   </view>
 </view>

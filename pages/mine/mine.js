@@ -1,14 +1,15 @@
 // pages/mine/mine.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    name_info:"",  //姓名
-    motto_info: "",  //格言
-    gender: "",        //性别
-    todo_item:"" ,    //  待办
+    name:"",  //姓名
+    // motto_info: "",  //格言
+    title: "",        //职称
+    department:"" ,    //  科室
     headshot:""//头像
   },
 to_settings:function(){
@@ -20,18 +21,46 @@ to_settings:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    wx.request({
-      url: 'http://127.0.0.1:5000/doctor_info',
-      success:(res)=>{
+    console.log(app.globalData.userInfo._openid),
+    wx.getStorage({
+      key: 'data',
+      success: (res) =>{
+        // 使用缓存数据
+        console.log('使用缓存数据：', res.data);
         this.setData({
-          name_info: res.data.name,
-          motto_info: res.data.motto,
-          gender: res.data.gender,
-          headshot: res.data.headshot
+          name: res.data.name,
+          title: res.data.title,
+          department: res.data.department,
+          headshot: res.data.head_shot
         });
-        console.log(this.data.name_info)
-      }
+      },
+      fail:()=>{
+        wx.request({
+          url: 'http://127.0.0.1:5000/test_2',
+          data:{
+            open_id: app.globalData.userInfo._openid
+          },
+          success:(res)=>{
+            console.log(res.data)
+            this.setData({
+              name: res.data.name,
+              title: res.data.title,
+              department: res.data.department,
+              headshot: res.data.head_shot
+            });
+            console.log(this.data.name)
+            wx.setStorage({             
+              key: 'data',
+              data: res.data,
+              success: function() {
+                console.log('数据已缓存');
+              }
+            })
+          }
     })
+      }
+      })
+
 
   },
 
