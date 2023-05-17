@@ -43,7 +43,7 @@
 <scroll-view scroll-y class="show_description">
   <text style="font-size: large;  font-weight: 400;">诊断详情：</text>
   <view style="height: 20rpx;"></view>
-  <text class="page-body">{{medical_info.station}}</text>
+  <text class="page-body">{{medical_info.situation}}</text>
 </scroll-view>
 
 <view class="blank-space"></view>

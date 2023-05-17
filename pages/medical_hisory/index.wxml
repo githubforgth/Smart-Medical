@@ -1,0 +1,14 @@
+<!--pages/medical_hisory/index.wxml-->
+<view>
+  <view class="case_container" wx:for="{{List}}">
+  <view class="case_info" bindtap="to_medical" data-id="{{item.id}}">
+      <text class="case_name">姓名：{{item.name}}</text>
+      <text class="case_sex">性别：{{item.gender}}</text>
+    </view>
+<scroll-view style="max-height: 200rpx; " scroll-y="true">
+    <view class="case_describe">
+        <text style="user-select: text;">  {{item.condition_description}}</text>
+    </view>
+  </scroll-view>
+  </view>
+</view>

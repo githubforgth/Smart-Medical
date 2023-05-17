@@ -36,5 +36,6 @@ Page({
         })
       },
     })
+    console.log(this.data.medical_info)
   }
 })

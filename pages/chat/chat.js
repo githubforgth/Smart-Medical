@@ -5,8 +5,10 @@ const utils = require("../../utils/util")
 Page({
     data: {
         inputValue : "",
-        massage:[],
-        time : 0
+        message:[],
+        time : 0,
+        userInfo:[],
+        id_2: 3
     },
 
     onLoad :function (options) {
@@ -16,8 +18,14 @@ Page({
           id: app.globalData.userInfo._id,
           id_2: options.id
         },
+        
         success:(res)=>{
            console.log("res---"+res.data)
+           this.setData({
+             message:res.data
+           })
+           console.log(this.data.id_2)
+           console.log(this.data.massage)
         }
       })
         this.setData({
@@ -30,63 +38,42 @@ Page({
 
     onshow: function (options) {
         // this.getChatList()
-        wx.request({
-          url: 'http://127.0.0.1:5000/massage_list',
-          data:{
-            id: app.globalData.userInfo.id,
-            id_2: options.id
-          },
-          success:(res)=>{
-             console.log("res---"+res)
-             this.setData({
-               massage: res.data
-             })
-             console.log(this.data.massage)
-          }
-        })
+      var id_2 = options.id
+      this.setData({
+        id_2: id_2
+      })
+      this.update_list(id_2)  
     },
 
-    publishMessage(){
-        if (this.data.inputValue == "") {
-            wx.showToast({
-                icon: "none",
-                title: '不能发送空消息',
-            })
-            return;
+    submit:function (e) {
+      // var value = e.detail.value.value;
+      // console.log(value);
+      wx.request({
+        url: 'http://127.0.0.1:5000/chat_submit',
+        data:{
+          id_1: app.globalData.userInfo._id,
+          id_2: this.data.id_2,
+          massage:"123"
+        },
+        success:(res)=>{
+          this.update_list(this.data.id_2)
         }
-        var that = this;
-        wx.cloud.database().collection('chat_record').doc(that.data.recordId).get({
-            success(res) {
-                console.log(res)
-                var record = res.data.record;
-
-                var msg = {}
-                msg.id = app.globalData.userInfo._id
-                msg.text = that.data.inputValue
-                msg.time = utils.formatTime(new Date())
-
-                console.log(msg)
-                record.push(msg)
-                console.log(record)
-                wx.cloud.database().collection('chat_record').doc(that.data.recordId).update({
-                    data: {
-                        record : record
-                    },
-                    success(res) {
-                        console.log(res)
-                        wx.showToast({
-                          title: '发送成功',
-                        })
-
-                        that.getChatList(),
-                        that.setData({
-                            inputValue : ''
-                        })
-                    }
-                
-                })
-            }
-        })
-    },  
-
+      })
+    },
+    update_list:function (id_2) {
+      wx.request({
+        url: 'http://127.0.0.1:5000/massage_list',
+        data:{
+          id: app.globalData.userInfo._id,
+          id_2: id_2
+        },
+        success:(res)=>{
+           console.log("res---"+res)
+           this.setData({
+             massage: res.data
+           })
+           console.log(this.data.massage)
+    }
+  })
+}
 })

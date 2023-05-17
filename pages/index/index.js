@@ -123,6 +123,11 @@ Page({
         url: '../medical_records/medical_records?id=' + medical_id,
       })
     },
+  to_medical_all:function(){
+    wx.navigateTo({
+      url: '../medical_hisory/index',
+    })
+  },
   //跳转至MINE
   to_mine: function(){
     wx.navigateTo({

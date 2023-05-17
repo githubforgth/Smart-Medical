@@ -46,7 +46,7 @@
     <text class="btn_text">开处方</text>
   </view>
   <view class="btn_item">
-    <image class="btn_image" src="../../images/卡片.png" bindtap="to_chat"></image>
+    <image class="btn_image" src="../../images/卡片.png" bindtap="to_medical_all"></image>
     <text class="btn_text">我的病例</text>
   </view>
   <view class="btn_item">

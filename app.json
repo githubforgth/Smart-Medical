@@ -10,7 +10,8 @@
     "pages/medical_records/medical_records",
     "pages/mine/person-info-settings/person-info-setting",
     "pages/mine/person-info-settings/to-change/to-change",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/medical_hisory/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

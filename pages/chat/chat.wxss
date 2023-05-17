@@ -61,6 +61,7 @@
 }
 
 .face {
+  margin: 3%;
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
@@ -103,4 +104,8 @@ text {
   word-wrap: break-word;
   word-break: break-all;
   white-space: pre-line;
+}
+.time_show{
+  font-size: medium;
+  color: #7f7f7f;
 }

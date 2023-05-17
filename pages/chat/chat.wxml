@@ -1,36 +1,39 @@
 
-<scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class='chat_content'>
-<view wx:for="{{chatList}}">
-
-    <block wx:if="{{item.id!=userInfo._id}}">
-    <view class="top">
-        <image class = "face" src="{{friend_avatarUrl}}"></image>
-        <view class="bot">
-        <text >{{item.text}}</text>
+<scroll-view scroll-y="true" >
+  <block wx:for="{{message}}">
+    <view wx:if="{{item[5]}}" style="display: flex;">
+    <view>
+      <image class="face"  src="https://th.bing.com/th/id/OIP.lYrJ4HRJhS2hmCB9gxcHyQAAAA?w=147&h=149&c=7&r=0&o=5&dpr=1.3&pid=1.7">
+      </image>
+    </view>
+    <view style="display: inline; margin: 3%;" class="pub-button-with-text">
+      <text class="time_show">{{item[4]}}</text>
+      <view>
+        <text>{{item[3]}}</text>
+      </view>
     </view>
     </view>
-    
-    </block>
-
-    <block wx:if="{{item.id==userInfo._id}}">
-    <view class="top-right">
-        <view class="bot-right">
-        <text>{{item.text}}</text>
+    <view wx:else class="top-right">
+      <view class="pub-button-with-text">
+        <view class="time_show">
+        <text>{{item[4]}}</text>
         </view>
-        <image class = "face-right" src="{{userInfo.avatarUrl}}"></image>
+        <view>
+        <text>
+        {{item[3]}}
+        </text>
+        </view>
+      </view>
+      <view>
+      <image src="{{userInfo.head_shot}}" class="face-right"></image>
+      </view>
     </view>
-    </block>
-</view>
-<view id="toView" class="test"></view>
+  </block>
+<view class="container_min"></view>
 </scroll-view>
-
 <view class="pub-comment">
-
-    <view class = "pub-left">
-    
-        <input class="pub-input" bindinput="handleInput" value="{{inputValue}}"></input>
-    </view>
-
-    <view class="pub-button{{inputValue==''?'':'-with-text'}}" bindtap="publishMessage{{inputValue==''?'123':''}}">发送</view>
-
+      <view class = "pub-left">
+          <input class="pub-input" name="submit"></input>
+      </view>
+      <view class="pub-button" bindtap="submit" from-type="submit" type="text">发送</view>
 </view>
